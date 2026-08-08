@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Накрутка часов</title>
+  <link rel="icon" href="pirat-icon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="is-booting">
+  <div class="splash" id="splash" aria-hidden="false">
+    <div class="splash-bg" aria-hidden="true">
+      <span class="splash-orb splash-orb-a"></span>
+      <span class="splash-orb splash-orb-b"></span>
+      <span class="splash-grid"></span>
+    </div>
+    <div class="splash-core">
+      <div class="splash-ring" aria-hidden="true"></div>
+      <div class="splash-ring splash-ring-2" aria-hidden="true"></div>
+      <img class="splash-logo" src="pirat-icon.png" width="96" height="96" alt="" draggable="false" />
+    </div>
+    <p class="splash-brand" id="splashBrand">Накрутка часов</p>
+    <p class="splash-sub" id="splashSub">by PIRAT</p>
+    <p class="splash-quote" id="splashQuote"></p>
+    <div class="splash-bar" aria-hidden="true">
+      <span class="splash-bar-fill" id="splashBarFill"></span>
+    </div>
+    <p class="splash-status" id="splashStatus">Загрузка…</p>
+  </div>
+
+  <div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
+  <div class="ach-toast" id="achToast" hidden>
+    <div class="ach-toast-icon" aria-hidden="true">★</div>
+    <div class="ach-toast-copy">
+      <p class="ach-toast-label" id="achToastLabel">Достижение открыто</p>
+      <p class="ach-toast-title" id="achToastTitle"></p>
+      <p class="ach-toast-desc" id="achToastDesc"></p>
+    </div>
+  </div>
+
+  <div class="frame">
+    <div class="frame-glow" aria-hidden="true"></div>
+    <div class="shell">
+      <div class="resize-handle n no-drag" data-edge="n"></div>
+      <div class="resize-handle s no-drag" data-edge="s"></div>
+      <div class="resize-handle e no-drag" data-edge="e"></div>
+      <div class="resize-handle w no-drag" data-edge="w"></div>
+      <div class="resize-handle ne no-drag" data-edge="ne"></div>
+      <div class="resize-handle nw no-drag" data-edge="nw"></div>
+      <div class="resize-handle se no-drag" data-edge="se"></div>
+      <div class="resize-handle sw no-drag" data-edge="sw"></div>
+      <header class="titlebar pywebview-drag-region" id="titlebar">
+        <div class="titlebar-left">
+          <img class="mark" src="pirat-icon.png" width="18" height="18" alt="" draggable="false" />
+          <span class="titlebar-sub" id="taglineMini">Idle</span>
+        </div>
+        <div class="titlebar-right no-drag">
+          <button type="button" class="lang-btn" id="langBtn" title="Language">RU</button>
+          <div class="win-controls">
+            <button type="button" class="win-btn no-drag" id="minBtn" title="Minimize" aria-label="Minimize">
+              <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><rect x="1" y="5.5" width="10" height="1.4" rx="0.7" fill="currentColor"/></svg>
+            </button>
+            <button type="button" class="win-btn no-drag" id="maxBtn" title="Maximize" aria-label="Maximize">
+              <svg class="icon-max" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><rect x="1.5" y="1.5" width="9" height="9" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+              <svg class="icon-restore" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" hidden>
+                <rect x="3.2" y="1.4" width="7.2" height="7.2" rx="1" fill="none" stroke="currentColor" stroke-width="1.3"/>
+                <rect x="1.4" y="3.4" width="7.2" height="7.2" rx="1" fill="none" stroke="currentColor" stroke-width="1.3"/>
+              </svg>
+            </button>
+            <button type="button" class="win-btn win-close no-drag" id="closeBtn" title="Close" aria-label="Close">
+              <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.2 2.2 L9.8 9.8 M9.8 2.2 L2.2 9.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="app">
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="brand" id="brand">Накрутка часов</p>
+            <p class="tagline" id="tagline">Без запуска игры</p>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-value" id="gamesCount">0</span>
+              <span class="stat-label" id="gamesCountLabel">игр</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value" id="sessionCount">0</span>
+              <span class="stat-label" id="sessionCountLabel">сессий</span>
+            </div>
+          </div>
+        </section>
+
+        <main class="layout">
+          <section class="panel library-panel">
+            <div class="panel-head">
+              <h2 id="libraryTitle">Библиотека</h2>
+              <button type="button" class="ghost-btn no-drag" id="refreshBtn">Обновить</button>
+            </div>
+            <div class="search-row">
+              <input type="search" id="searchInput" class="no-drag" placeholder="Поиск игр…" autocomplete="off" />
+            </div>
+            <div class="account-row no-drag" id="accountRow" hidden>
+              <label class="account-label" id="accountLabel" for="accountFilter">Аккаунт</label>
+              <select id="accountFilter" class="account-filter"></select>
+            </div>
+            <p class="hint" id="hintMulti">Все игры аккаунта, включая не установленные.</p>
+            <div class="game-list" id="gameList"></div>
+            <p class="empty" id="libraryEmpty" hidden></p>
+          </section>
+
+          <section class="panel sessions-panel">
+            <div class="panel-head">
+              <h2 id="sessionsTitle">Активные сессии</h2>
+              <button type="button" class="ghost-btn danger no-drag" id="stopAllBtn">Стоп все</button>
+            </div>
+            <div class="session-list" id="sessionList"></div>
+            <p class="empty" id="sessionsEmpty"></p>
+            <div class="toast" id="toast" hidden></div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop no-drag" id="steamModal" hidden>
+    <div class="modal steam-modal" role="dialog" aria-modal="true" aria-labelledby="steamModalTitle">
+      <div class="modal-glow" aria-hidden="true"></div>
+      <div class="modal-icon" aria-hidden="true">
+        <img src="steam-icon.png" alt="" width="56" height="56" draggable="false" />
+      </div>
+      <h3 class="modal-title" id="steamModalTitle">Steam не запущен</h3>
+      <p class="modal-body" id="steamModalBody">Для накрутки часов нужен запущенный клиент Steam.</p>
+      <p class="modal-path" id="steamModalPath" hidden></p>
+      <div class="modal-actions">
+        <button type="button" class="ghost-btn no-drag" id="steamModalCancel">Не сейчас</button>
+        <button type="button" class="primary-btn no-drag" id="steamModalLaunch">Запустить Steam</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop no-drag" id="confirmModal" hidden>
+    <div class="modal confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirmModalTitle">
+      <div class="confirm-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="40" height="40">
+          <circle cx="24" cy="24" r="22" fill="rgba(227,106,93,0.12)" stroke="rgba(227,106,93,0.45)" stroke-width="1.5"/>
+          <path d="M24 14v14" stroke="#F0A39B" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="24" cy="34" r="2.2" fill="#F0A39B"/>
+        </svg>
+      </div>
+      <h3 class="modal-title" id="confirmModalTitle">Подтверждение</h3>
+      <p class="modal-body" id="confirmModalBody">Остановить все сессии?</p>
+      <div class="modal-actions">
+        <button type="button" class="ghost-btn no-drag" id="confirmModalCancel">Отмена</button>
+        <button type="button" class="primary-btn danger-btn no-drag" id="confirmModalOk">Остановить</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
