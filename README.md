@@ -8,6 +8,18 @@
 [![Release](https://img.shields.io/github/v/release/kochilorov5-lab/PIRAT?include_prereleases)](https://github.com/kochilorov5-lab/PIRAT/releases)
 [![Downloads](https://img.shields.io/github/downloads/kochilorov5-lab/PIRAT/total)](https://github.com/kochilorov5-lab/PIRAT/releases)
 
+<p align="center">
+  <img src="docs/screenshots/preview.gif" alt="PIRAT preview" width="820" />
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/01-splash.png" alt="Splash screen" width="400" />
+  &nbsp;
+  <img src="docs/screenshots/02-main.png" alt="Main window" width="400" />
+</p>
+
+<p align="center"><sub>🎬 Splash → главное окно · реальные скриншоты утилиты</sub></p>
+
 ---
 
 ## ✨ Возможности
